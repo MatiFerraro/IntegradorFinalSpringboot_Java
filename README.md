@@ -1,5 +1,5 @@
-# Ej_IntegradorFinal_Metele
-Curso SysOne
+# Proyecto Integrador Final Metele - Curso SysOne
+Matías Ferraro
 
 ## Enunciado
 Tomando como referencia el ejercicio integrador, incorporar en las distintas capas según corresponda, los frameworks jpa/hibernate, spring-mvc, spring-data, springboot.
