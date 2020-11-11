@@ -1,6 +1,9 @@
 package entities;
 
 
+import entities.adicional.Adicional;
+import entities.automovil.Automovil;
+
 import javax.persistence.*;
 
 @Entity

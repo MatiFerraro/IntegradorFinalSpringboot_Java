@@ -1,4 +1,8 @@
-package entities;
+package entities.automovil;
+
+import entities.adicional.Adicional;
+import entities.Cliente;
+import entities.Variante;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,8 +16,7 @@ public abstract class Automovil {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "precioFinal")
-    protected Float precioFinal;
+    private Float precioFinal;
 
     @OneToOne
     @JoinColumn(name = "idCliente", referencedColumnName = "id")

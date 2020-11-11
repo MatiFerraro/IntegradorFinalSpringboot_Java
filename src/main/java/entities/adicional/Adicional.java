@@ -1,17 +1,19 @@
-package entities;
+package entities.adicional;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "adicional")
-public class Adicional {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "descripcion")
+public abstract class Adicional {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
     @Column(name = "descripcion")
     private String descripcion;
-    @Column(name = "precio")
+    @Column(name = "precioAdicional")
     private Float precioAdicional;
 
     public Integer getId() {

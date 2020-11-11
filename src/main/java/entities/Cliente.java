@@ -1,5 +1,7 @@
 package entities;
 
+import entities.automovil.Automovil;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,9 @@ public class Cliente {
     private String nombre;
     @Column(name = "apellido")
     private String apellido;
+
+    @OneToOne(mappedBy = "cliente")
+    Automovil automovil;
 
     public Integer getId() {
         return id;

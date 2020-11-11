@@ -1,9 +1,9 @@
 package repositories;
 
-import entities.automovil.Automovil;
+import entities.adicional.Adicional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AutomovilRepository extends CrudRepository<Automovil, Integer> {
+public interface AdicionalRepository extends CrudRepository<Adicional, Integer> {
 }
