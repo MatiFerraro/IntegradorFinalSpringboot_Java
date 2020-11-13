@@ -2,10 +2,13 @@ package services;
 
 import DTOs.AdicionalDTO;
 import DTOs.AutomovilDTO;
+import entities.AdicionalesAuto;
 import entities.adicional.Adicional;
 import entities.automovil.Automovil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import repositories.AdicionalRepository;
+import repositories.AdicionalesAutoRepository;
 import repositories.AutomovilRepository;
 
 import java.util.ArrayList;
@@ -16,9 +19,19 @@ public class AutomovilService {
 
     @Autowired
     AutomovilRepository automovilRespository;
+    @Autowired
+    AdicionalesAutoRepository adicionalesAutoRepository;
 
     public void insertarAutomovil(AutomovilDTO automovilDTO) {
-        automovilRespository.save(converterDTO_Entity(automovilDTO));
+        AdicionalesAuto adicionalesAuto = null;
+        Automovil automovil = converterDTO_Entity(automovilDTO);
+        automovilRespository.save(automovil);
+        List<Adicional> adicionales = automovil.getAdicionales();
+        for(Adicional adicional : adicionales) {
+            adicionalesAuto.setAutomovil(automovil);
+            adicionalesAuto.setAdicional(adicional);
+            adicionalesAutoRepository.save(adicionalesAuto);
+        }
     }
 
     public void eliminarAutomovil(Integer idAutomovil) {
@@ -26,9 +39,16 @@ public class AutomovilService {
     }
 
     public void modificarAutomovil(Integer idAutomovil, AutomovilDTO automovilDTO) {
+        AdicionalesAuto adicionalesAuto = null;
         Automovil automovil = converterDTO_Entity(automovilDTO);
         automovil.setId(idAutomovil);
         automovilRespository.save(automovil);
+        List<Adicional> adicionales = automovil.getAdicionales();
+        for(Adicional adicional : adicionales) {
+            adicionalesAuto.setAutomovil(automovil);
+            adicionalesAuto.setAdicional(adicional);
+            adicionalesAutoRepository.save(adicionalesAuto);
+        }
     }
 
     public List<AutomovilDTO> consultarAutomoviles() {

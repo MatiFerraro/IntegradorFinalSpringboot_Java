@@ -18,4 +18,20 @@ public class AdicionalesAuto {
     @JoinColumn(name = "idAdicional", referencedColumnName = "id")
     private Adicional adicional;
 
+
+    public Automovil getAutomovil() {
+        return automovil;
+    }
+
+    public void setAutomovil(Automovil automovil) {
+        this.automovil = automovil;
+    }
+
+    public Adicional getAdicional() {
+        return adicional;
+    }
+
+    public void setAdicional(Adicional adicional) {
+        this.adicional = adicional;
+    }
 }

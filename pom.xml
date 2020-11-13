@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ej_IntegradorFinalSpringboot</groupId>
-	<artifactId>ej_IntegradorFinalSpringboot</artifactId>
+	<artifactId>fabricaciondeautos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ej_IntegradorFinalSpringboot</name>
 	<description>Ejercicio Integrador Final Springboot - Curso SysOne</description>
