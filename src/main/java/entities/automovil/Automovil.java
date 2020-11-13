@@ -2,35 +2,34 @@ package entities.automovil;
 
 import entities.adicional.Adicional;
 import entities.Cliente;
-import entities.Variante;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "automovil")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "variante")
 public abstract class Automovil {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
-    private Float precioFinal;
+    @Column(name = "variante")
+    private String variante;
+    @Column(name = "precioBase")
+    private Float precioBase;
 
     @OneToOne
     @JoinColumn(name = "idCliente", referencedColumnName = "id")
     private Cliente cliente;
 
-    @OneToOne
-    @JoinColumn(name = "idVariante", referencedColumnName = "id")
-    private Variante variante;
-
     @OneToMany(mappedBy = "automovil", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    private List<Adicional> adicionales_auto;
+    private List<Adicional> adicionales;
 
     public Automovil(){
-        adicionales_auto = new ArrayList<Adicional>();
+        adicionales = new ArrayList<Adicional>();
     }
 
     public Integer getId() {
@@ -41,12 +40,37 @@ public abstract class Automovil {
         this.id = id;
     }
 
-    public Float getPrecioFinal() {
-        return precioFinal;
+    public String getVariante() {
+        return variante;
     }
 
-    public void setPrecioFinal(Float precioFinal) {
-        this.precioFinal = precioFinal;
+    public void setVariante(String variante) {
+        this.variante = variante;
+    }
+
+    public Float getPrecioBase() {
+        return precioBase;
+    }
+
+    public void setPrecioBase(Float precioBase) {
+        this.precioBase = precioBase;
+    }
+
+    public List<Adicional> getAdicionales() {
+        return adicionales;
+    }
+
+    public void setAdicionales(List<Adicional> adicionales) {
+        this.adicionales = adicionales;
+    }
+
+    public Float getPrecioFinal() {
+        Float precioAux = 0f;
+        for(Adicional adicional : adicionales) {
+            precioAux += adicional.getPrecioAdicional();
+        }
+        precioAux += precioBase;
+        return precioAux;
     }
 
 }

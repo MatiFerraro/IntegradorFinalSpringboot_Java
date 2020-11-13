@@ -1,5 +1,7 @@
 package entities.adicional;
 
+import entities.AdicionalesAuto;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,9 @@ public abstract class Adicional {
     private String descripcion;
     @Column(name = "precioAdicional")
     private Float precioAdicional;
+
+    @OneToOne(mappedBy = "adicional")
+    AdicionalesAuto adicionales_auto;
 
     public Integer getId() {
         return id;
