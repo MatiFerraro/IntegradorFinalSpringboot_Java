@@ -31,4 +31,5 @@ public class AutomovilDTO {
     public void setAdicionales(List<AdicionalDTO> adicionalesDTO) {
         this.adicionalesDTO = adicionalesDTO;
     }
+
 }

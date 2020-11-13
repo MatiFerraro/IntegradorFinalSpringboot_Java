@@ -1,10 +1,9 @@
 package controller;
 
 import DTOs.AutomovilDTO;
-import entities.automovil.Automovil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.AutomovilService;
+import services.imp.AutomovilServiceImp;
 
 import java.util.List;
 
@@ -13,7 +12,7 @@ import java.util.List;
 public class AutomovilController {
 
     @Autowired
-    public AutomovilService automovilService;
+    public AutomovilServiceImp automovilService;
 
     @PostMapping("/automovil")
     public void postAutomovil(@RequestBody AutomovilDTO automovilDTO) {

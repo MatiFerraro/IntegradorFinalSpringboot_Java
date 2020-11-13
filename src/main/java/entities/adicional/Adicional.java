@@ -44,4 +44,5 @@ public abstract class Adicional {
     public void setPrecioAdicional(Float precioAdicional) {
         this.precioAdicional = precioAdicional;
     }
+
 }

@@ -1,6 +1,5 @@
 package entities;
 
-
 import entities.adicional.Adicional;
 import entities.automovil.Automovil;
 
@@ -34,4 +33,5 @@ public class AdicionalesAuto {
     public void setAdicional(Adicional adicional) {
         this.adicional = adicional;
     }
+
 }

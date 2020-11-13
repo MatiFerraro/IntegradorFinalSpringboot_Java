@@ -3,14 +3,14 @@ package controller;
 import DTOs.AdicionalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import services.AdicionalService;
+import services.imp.AdicionalServiceImp;
 
 @RestController
 @RequestMapping("/adicional")
 public class AdicionalController {
 
     @Autowired
-    AdicionalService adicionalService;
+    AdicionalServiceImp adicionalService;
 
     @PostMapping("/adicional")
     public void postAdicional(@RequestBody AdicionalDTO adicionalDTO) {
